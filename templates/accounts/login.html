@@ -5,7 +5,7 @@
     <div class="col-md-4 col-lg-3">
         <div class="card shadow border-0">
             <div class="card-body p-4">
-                
+
                 <!-- Title -->
                 <h4 class="text-center mb-1 fw-bold">Welcome Back</h4>
                 <p class="text-center text-muted mb-4">
@@ -25,8 +25,31 @@
                     <!-- Password -->
                     <div class="mb-3">
                         <label class="form-label">Password</label>
-                        {{ form.password }}
+                        <div class="input-group">
+                            {{ form.password }}
+                            <button class="btn btn-outline-secondary" type="button" id="togglePassword"
+                                onclick="togglePasswordVisibility()">
+                                <i class="bi bi-eye" id="eyeIcon"></i>
+                            </button>
+                        </div>
                     </div>
+
+                    <script>
+                        function togglePasswordVisibility() {
+                            const passwordInput = document.getElementById('id_password');
+                            const eyeIcon = document.getElementById('eyeIcon');
+
+                            if (passwordInput.type === 'password') {
+                                passwordInput.type = 'text';
+                                eyeIcon.classList.remove('bi-eye');
+                                eyeIcon.classList.add('bi-eye-slash');
+                            } else {
+                                passwordInput.type = 'password';
+                                eyeIcon.classList.remove('bi-eye-slash');
+                                eyeIcon.classList.add('bi-eye');
+                            }
+                        }
+                    </script>
 
                     <!-- Submit -->
                     <button type="submit" class="btn btn-primary w-100 py-2">
