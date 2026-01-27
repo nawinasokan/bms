@@ -4,8 +4,8 @@ A comprehensive web-based Business Management System built with Django to manage
 
 ## 🔐 Admin login credentials
 
-Username: Admin001
-Password: password@123
+- **Username:** `Admin001`
+- **Password:** `password@123`
 
 ## ✨ Features
 
