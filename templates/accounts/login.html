@@ -27,12 +27,23 @@
                         <label class="form-label">Password</label>
                         <div class="input-group">
                             {{ form.password }}
-                            <button class="btn btn-outline-secondary" type="button" id="togglePassword"
-                                onclick="togglePasswordVisibility()">
+                            <button class="btn btn-outline-secondary border-start-0" type="button" id="togglePassword"
+                                onclick="togglePasswordVisibility()" style="background: white;">
                                 <i class="bi bi-eye" id="eyeIcon"></i>
                             </button>
                         </div>
                     </div>
+                    <style>
+                        #id_password {
+                            flex: 1 1 auto;
+                            border-right: none;
+                        }
+
+                        #id_password:focus {
+                            box-shadow: none;
+                            border-color: #ced4da;
+                        }
+                    </style>
 
                     <script>
                         function togglePasswordVisibility() {
