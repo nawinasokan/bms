@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="d-flex align-items-center mb-3">
+    <h2 class="mb-0">Create Order</h2>
+
+    <div class="ms-auto">
+        <a href="{% url 'order_list' %}" class="btn btn-secondary">
+            Back
+        </a>
+    </div>
+</div>
+
+<div class="card shadow-sm">
+    <div class="card-body">
+
+        <form method="post">
+            {% csrf_token %}
+
+            <!-- Customer -->
+            <div class="mb-3">
+                <label class="form-label fw-semibold">Customer</label>
+                <select name="customer" class="form-select" required>
+                    {% for customer in customers %}
+                        <option value="{{ customer.id }}">
+                            {{ customer.name }}
+                        </option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <hr>
+
+            <!-- Products -->
+            <h5 class="mb-3">Products</h5>
+
+            {% for product in products %}
+            <div class="row align-items-center mb-2">
+                <div class="col-md-6">
+                    <div class="form-check">
+                        <input class="form-check-input"
+                            type="checkbox"
+                            name="product"
+                            value="{{ product.id }}"
+                            id="product{{ product.id }}">
+                        <label class="form-check-label"
+                            for="product{{ product.id }}">
+                            {{ product.name }}
+                            <small class="text-muted">(Stock: {{ product.stock }})</small>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <input type="number"
+                        name="quantity_{{ product.id }}"
+                        class="form-control"
+                        min="1"
+                        value="1">
+                </div>
+            </div>
+
+            {% endfor %}
+
+            <hr>
+
+            <!-- Submit -->
+            {% if has_customers and has_products %}
+                <button type="submit" class="btn btn-success px-4">
+                    Create Order
+                </button>
+            {% elif not has_customers %}
+                <button type="button"
+                        class="btn btn-success px-4">
+                    Create Order
+                </button>
+            {% elif not has_products %}
+                <button type="button"
+                        class="btn btn-success px-4">
+                    Create Order
+                </button>
+            {% endif %}
+        </form>
+
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row justify-content-center align-items-center" style="min-height: 80vh;">
+    <div class="col-md-4 col-lg-3">
+        <div class="card shadow border-0">
+            <div class="card-body p-4">
+                
+                <!-- Title -->
+                <h4 class="text-center mb-1 fw-bold">Welcome Back</h4>
+                <p class="text-center text-muted mb-4">
+                    Sign in to continue
+                </p>
+
+                <!-- Login Form -->
+                <form method="post">
+                    {% csrf_token %}
+
+                    <!-- Username -->
+                    <div class="mb-3">
+                        <label class="form-label">Username</label>
+                        {{ form.username }}
+                    </div>
+
+                    <!-- Password -->
+                    <div class="mb-3">
+                        <label class="form-label">Password</label>
+                        {{ form.password }}
+                    </div>
+
+                    <!-- Submit -->
+                    <button type="submit" class="btn btn-primary w-100 py-2">
+                        Login
+                    </button>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
