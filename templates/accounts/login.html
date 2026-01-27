@@ -25,42 +25,8 @@
                     <!-- Password -->
                     <div class="mb-3">
                         <label class="form-label">Password</label>
-                        <div class="input-group">
-                            {{ form.password }}
-                            <button class="btn btn-outline-secondary border-start-0" type="button" id="togglePassword"
-                                onclick="togglePasswordVisibility()" style="background: white;">
-                                <i class="bi bi-eye" id="eyeIcon"></i>
-                            </button>
-                        </div>
+                        {{ form.password }}
                     </div>
-                    <style>
-                        #id_password {
-                            flex: 1 1 auto;
-                            border-right: none;
-                        }
-
-                        #id_password:focus {
-                            box-shadow: none;
-                            border-color: #ced4da;
-                        }
-                    </style>
-
-                    <script>
-                        function togglePasswordVisibility() {
-                            const passwordInput = document.getElementById('id_password');
-                            const eyeIcon = document.getElementById('eyeIcon');
-
-                            if (passwordInput.type === 'password') {
-                                passwordInput.type = 'text';
-                                eyeIcon.classList.remove('bi-eye');
-                                eyeIcon.classList.add('bi-eye-slash');
-                            } else {
-                                passwordInput.type = 'password';
-                                eyeIcon.classList.remove('bi-eye-slash');
-                                eyeIcon.classList.add('bi-eye');
-                            }
-                        }
-                    </script>
 
                     <!-- Submit -->
                     <button type="submit" class="btn btn-primary w-100 py-2">
